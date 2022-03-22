@@ -1,16 +1,25 @@
 import { createContext } from "react";
 import { useLocalObservable } from "mobx-react";
+import { nanoid } from "nanoid";
 
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const store = useLocalObservable(() => ({
-    bugs: ["무당벌레", "william"],
-    addBug: (bug) => {
-      store.bugs.push(bug);
+    todos: [],
+    addTodo: (memo) => {
+      store.todos.push({
+        memo,
+        id: nanoid(),
+        isChecked: false,
+      });
     },
-    get bugsCount() {
-      return store.bugs.length;
+    removeTodo: (id) => {
+      const index = store.todos.findIndex((todo) => todo.id === id);
+      store.todos[index].isChecked = !store.todos[index].isChecked;
+    },
+    get todosCount() {
+      return store.todos.filter((todo) => todo.isChecked === false).length;
     },
   }));
 
