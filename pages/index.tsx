@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { StoreContext } from "../store/StoreProvider";
+import { StoreContext } from "@store/StoreProvider";
 import { observer } from "mobx-react";
 import { useForm } from "react-hook-form";
 
