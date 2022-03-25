@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import StoreProvider from "../store/StoreProvider";
 import { AppProps } from "next/app";
 
