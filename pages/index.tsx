@@ -25,31 +25,47 @@ const Home: NextPage = observer(() => {
   return (
     <main>
       <div className="flex items-center justify-center my-16">
-        <div className="flex flex-col items-start py-2 space-y-4 divide-y-2 cursor-ponter">
-          <h1>{store.todosCount} 개의 할일이 남았습니다.</h1>
+        <div className="flex flex-col items-start py-2 space-y-2 cursor-ponter">
+          <h1 className="text-lg text-gray-800 font-sm">
+            <span className="pr-2 text-xl font-bold text-violet-600">
+              {store.todosCount}
+            </span>
+            개의 할일이 남았습니다.
+          </h1>
           <ul>
             {store.todos.map((todo) => (
-              <div key={todo.id} className="pt-4 space-x-2">
-                <label className="text-blue-600 text-md fomt-medium">
-                  <input
-                    className="w-6 h-6 transition border-2 border-blue-400 rounded-md focus:ring-0"
+              <div key={todo.id} className="flex items-center">
+                <div className="flex pb-2 mr-2">
+                <input
+                    className="w-6 h-6 transition border border-gray-300 rounded-lg cursor-pointer checked:text-orange-500"
                     value={todo.id}
                     onChange={onChange}
                     type="checkbox"
                     checked={todo.isChecked}
                   />
+                </div>
+                <label className="font-normal text-gray-700 text-md">
                   {todo.memo}
-                  <br />
                 </label>
               </div>
             ))}
           </ul>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register("memo", { required: true })} />
-            <button type="submit">Add</button>
-            <br />
+          <form onSubmit={handleSubmit(onSubmit)} className="space-x-2">
+            <input
+              className="px-2 py-2 text-gray-800 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-violet-300 font-sm"
+              type="text"
+              {...register("memo", { required: true })}
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 text-white border rounded-md border-violet-700 bg-violet-700 hover:bg-violet-800 hover:border-violet-900"
+            >
+              Add
+            </button>
             {errors.memo && (
-              <span style={{ color: "red" }}>This field is required</span>
+              <span className="block mt-2 text-sm text-red-500">
+                This field is required
+              </span>
             )}
           </form>
         </div>
