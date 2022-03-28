@@ -26,7 +26,7 @@ const Home: NextPage = observer(() => {
     <main>
       <div className="flex items-center justify-center my-16">
         <div className="flex flex-col items-start py-2 space-y-2 cursor-ponter">
-          <h1 className="text-lg text-gray-800 font-sm">
+          <h1 className="mb-8 text-lg text-gray-800 font-sm">
             <span className="pr-2 text-xl font-bold text-violet-600">
               {store.todosCount}
             </span>
@@ -34,10 +34,10 @@ const Home: NextPage = observer(() => {
           </h1>
           <ul>
             {store.todos.map((todo) => (
-              <div key={todo.id} className="flex items-center">
-                <div className="flex pb-2 mr-2">
+              <div key={todo.id} className="flex items-center mb-4">
+                <div className="flex mr-2">
                 <input
-                    className="w-6 h-6 transition border border-gray-300 rounded-lg cursor-pointer checked:text-orange-500"
+                    className="w-6 h-6 transition border border-gray-300 rounded-md cursor-pointer accent-violet-500 focus:accent-violet-600"
                     value={todo.id}
                     onChange={onChange}
                     type="checkbox"
