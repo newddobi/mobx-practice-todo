@@ -30,7 +30,7 @@ const Home: NextPage = observer(() => {
             <span className="pr-2 text-xl font-bold text-violet-600">
               {store.todosCount}
             </span>
-            개의 할일이 남았습니다.
+            개의 할 일이 남았습니다.
           </h1>
           <ul>
             {store.todos.map((todo) => (
